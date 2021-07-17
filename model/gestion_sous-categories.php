@@ -22,14 +22,14 @@ switch ($get_action) {
         break;
 
     case 'add': // ajout d'une sous-catégories
-        // recupération de la donnée si envoyée 
+        // récupération de la donnée si envoyée
         $post_sous_categorie = isset($_POST["sous_categorie"]) ? filter_input(INPUT_POST, 'sous_categorie', FILTER_SANITIZE_SPECIAL_CHARS) : null;
         $post_categorie = isset($_POST["categorie"]) ? filter_input(INPUT_POST, 'categorie', FILTER_SANITIZE_SPECIAL_CHARS) : NULL; // retour d'un sélet donc l'id de la catégorie est retourner
         // Création du tableau d'option du sélect
-        $categories = getCategories();
-        $categories_names = array_column($categories, 'level_1');
-        $categories_id = array_column($categories, 'category_level_1_id"');
-        $categories_option = array_merge($categories_id, $categories_names);  // tableau des options 
+        $categoriesVisible = getCategoriesVisible();
+        $categories_option = array_column($categoriesVisible, 'level_1' , 'category_level_1_id');
+        // $categories_id = array_column($categories, 'category_level_1_id"');
+        /// $categories_option = array_merge($categories_id, $categories_names);  // tableau des options
 
 
 
@@ -86,10 +86,8 @@ switch ($get_action) {
         $post_categorie = isset($_POST["categorie"]) ? filter_input(INPUT_POST, 'categorie', FILTER_SANITIZE_SPECIAL_CHARS) : null ; // comme c'est un select, je récupère l'id de la catégorie 
         
         // Création du tableau d'option du sélect
-        $categories = getCategories();
-        $categories_names = array_column($categories, 'level_1');
-        $categories_id = array_column($categories, 'category_level_1_id"');
-        $categories_option = array_merge($categories_id, $categories_names);  // tableau des options 
+        $categoriesVisible = getCategoriesVisible();
+        $categories_option = array_column($categoriesVisible, 'level_1' , 'category_level_1_id');
 
         $input = [];
 
