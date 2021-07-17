@@ -49,20 +49,21 @@ function insertSousCategorie($categorie_id, $sous_categorie)
  */
 function getSousCategorie($sous_categorie_id)
 {
-    $sql = "SELECT category_level_2_id , level_2, is_visible FROM category_level_2 WHERE category_level_2_id = " . $sous_categorie_id;
+    $sql = "SELECT category_level_1_id , level_2, is_visible FROM category_level_2 WHERE category_level_2_id = " . $sous_categorie_id;
     return requeteResultat($sql);
 }
 
 
-function updateSousCategorie($sous_categorie_name, $categorie_id)
+function updateSousCategorie($sous_categorie_name, $category_level_1_id, $get_sous_categorie_id)
 {
-    if (!is_numeric($categorie_id)) {
+    if (!is_numeric($get_sous_categorie_id) || !is_numeric($category_level_1_id)) {
         return false;
     }
     $sql = "UPDATE category_level_2 
                 SET 
-                    level_2 = '" . $sous_categorie_name . "' 
-            WHERE category_level_1_id= " . $categorie_id . ";
+                    level_2 = '" . $sous_categorie_name . "' ,
+                    category_level_1_id = '". $category_level_1_id . "'
+            WHERE category_level_2_id= " . $get_sous_categorie_id. ";
             ";
     // exécution de la requête
     return ExecRequete($sql);

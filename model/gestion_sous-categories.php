@@ -72,18 +72,18 @@ switch ($get_action) {
         if (empty($_POST)) {
             // récupération d'une sous-catégorie en fonction de l'id de celle-ci
             $result = getSousCategorie($get_sous_categorie_id);
-            var_dump($result); 
-            $category_level_2_id = $result[0]["category_level_2_id"];
+            // var_dump($result);
+            $category_level_1_id = $result[0]["category_level_1_id"];
             $sous_categorie_name = $result[0]["level_2"];
             $is_visible = $result[0]["is_visible"];
         } else {
-            $category_level_2_id = null;
+            $category_level_1_id = null;
             $sous_categorie_name = null;
             $is_visible = null;
         }
-
+         // var_dump($_POST);
         $post_sous_categorie = isset($_POST["sous_categorie"]) ? filter_input(INPUT_POST, 'sous_categorie', FILTER_SANITIZE_SPECIAL_CHARS) : $sous_categorie_name;
-        $post_categorie = isset($_POST["categorie"]) ? filter_input(INPUT_POST, 'categorie', FILTER_SANITIZE_SPECIAL_CHARS) : null ; // comme c'est un select, je récupère l'id de la catégorie 
+        $post_categorie = isset($_POST["categorie"]) ? filter_input(INPUT_POST, 'categorie', FILTER_SANITIZE_SPECIAL_CHARS) : $category_level_1_id ; // comme c'est un select, je récupère l'id de la catégorie
         
         // Création du tableau d'option du sélect
         $categoriesVisible = getCategoriesVisible();
@@ -93,7 +93,7 @@ switch ($get_action) {
 
         $input[] = addLayout("<h4>Modifier une Sous-catégorie</h4>");
         $input[] = addLayout("<div class='row'>");
-        $input[] = addSelect('Catégorie asociée', ['name' => 'categorie', "class" => "u-full-width"], $categories_option, "", true, "six columns");
+        $input[] = addSelect('Catégorie associée', ['name' => 'categorie', "class" => "u-full-width"], $categories_option,  $post_categorie , true, "six columns");
         $input[] = addLayout("</div>");
 
         $input[] = addLayout("<div class='row'>");
@@ -109,7 +109,7 @@ switch ($get_action) {
 
             $page_view = "sous_categorie_form";
         } else { // si le formulaire est rempli correctement. 
-            if (updateSousCategorie($post_sous_categorie, $post_categorie)) {
+            if (updateSousCategorie($post_sous_categorie, $post_categorie, $get_sous_categorie_id)) {
                 // message de succes qui sera affiché dans le <body>
                 $msg = "<p>données modifiée avec succès</p>";
                 $msg_class = "success";
@@ -119,7 +119,7 @@ switch ($get_action) {
                 $msg_class = "error";
             }
 
-            $page_view = "categories_liste";
+            $page_view = "sous_categories_liste";
 
             $categories = getCategories();
         }
