@@ -3,7 +3,7 @@
 define("DB_NOM", "root");
 define("DB_PASS", "");
 define("DB_SERVEUR", "localhost");
-define("DB_BASE", "isl_2021_sess1");
+define("DB_BASE", "isl_2021_sess2");
 
 define("DEBUG", true);
 
