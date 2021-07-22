@@ -125,9 +125,20 @@ switch ($get_action) {
         }
 
         break;
-    case 'showHide': // cacher ou rendre visible une catégorie 
-    
+    case 'showHide': // cacher ou rendre visible une sous-catégorie
+        $get_sous_categorie_id = isset($_GET["sous-categorie_id"]) ? filter_input(INPUT_GET, 'sous-categorie_id', FILTER_SANITIZE_NUMBER_INT) : null;
 
+        if(showHideSousCategories($get_sous_categorie_id)){
+            // message de succes qui sera affiché dans le <body>
+            $msg = "<p>mise à jour de l'état réalisée avec succès</p>";
+            $msg_class = "success";
+        }else{
+            // message d'erreur qui sera affiché dans le <body>
+            $msg = "<p>erreur lors de la mise à jour de l'état</p>";
+            $msg_class = "error";
+        }
 
+        $page_view = "sous_categories_liste";
+        $categories = getCategories();
         break;
 }

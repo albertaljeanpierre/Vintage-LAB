@@ -68,3 +68,24 @@ function updateSousCategorie($sous_categorie_name, $category_level_1_id, $get_so
     // exécution de la requête
     return ExecRequete($sql);
 }
+
+function showHideSousCategories($id){
+    if(!is_numeric($id)){
+        return false;
+    }
+    // récupération de l'état avant mise à jour
+    $sql = "SELECT is_visible FROM category_level_2 WHERE category_level_2_id = ".$id.";";
+    $result = requeteResultat($sql);
+    if(is_array($result)){
+        $etat_is_visble = $result[0]["is_visible"];
+
+        $nouvel_etat = $etat_is_visble == "1" ? "0" : "1";
+        // mise à jour vers le nouvel état
+        $sql = "UPDATE category_level_2 SET is_visible = '".$nouvel_etat."' WHERE category_level_2_id = ".$id.";";
+        // exécution de la requête
+        return ExecRequete($sql);
+
+    }else{
+        return false;
+    }
+}
