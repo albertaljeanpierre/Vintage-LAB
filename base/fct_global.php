@@ -32,6 +32,7 @@ function adminMenu($public_menu = ""){
                             <li><a href="index.php?p=gestion_shape">Etat</a></li>
                             <li><a href="index.php?p=gestion_categories">Catégories</a></li>
                             <li><a href="index.php?p=gestion_sous-categories">Sous-catégories</a></li>
+                            <li><a href="index.php?p=gestion_fiches-produits">Fiches produits</a></li>
                         </ul>
                     </li>
                     <li>
