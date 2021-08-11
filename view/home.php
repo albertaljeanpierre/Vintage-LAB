@@ -1,4 +1,3 @@
-
 <div id='search' class='u-full-width'>
     <div id="trail" class="container row">
         <ul>
@@ -10,6 +9,7 @@
 <section class="container">
 
     <?php
+    $compteur = 0;
     foreach ($articles as $article) {
         $article_id = $article['ad_id'];
         $article_sous_cat_id = $article['category_level_2_id'];
@@ -26,47 +26,50 @@
         $article_date_ajout = $article['date_add'];
         $is_visible = $article['is_visible'];
         $is_disponible = $article['is_disponible'];
-        
-        
-        /// NOTE : il faut jouer avec un %3 pour écrire la div de class row avec 3 articles dedans. 
-        ?>
-        <div class=""> 
-            <!-- début du 1er bloc "article" -->
-            <article class="pres_product four columns border">
-                <div class="thumb">
-                    <a href="./?p=detail&id=<?= $article_id; ?>" title="">
-                        <span class="rollover"><i>+</i></span>
-                        <img src="upload/thumb/thumb_<?= $article_id; ?>-1.jpg" alt="" />
-                    </a>
-                </div>
-                <header>
-                    <h4><a href="./?p=detail&id=<?= $article_id; ?>" title=""><?= $article_description; ?></a></h4>
-                    <div class="subheader">
-                        <span class="fa fa-bars"></span> <a href="" title=""></a>
-                        <span class="separator">|</span>
-                        <span class="fa fa-pencil"></span> <a href="" title="">Gaetano Sciolari</a>
-                        <span class="separator">|</span>
-                        <span class="fa fa-building-o"></span> <a href="" title=""><small style="opacity:.5;">- non précisé -</small></a>
-                    </div>
-                </header>
-                <div class="une_txt">
-                    <p>
-                       <?= $article_description; ?> 
-                        <a href="./?p=detail&id=<?= $article_id; ?>" title="">[...]</a>
-                        <b><?= $article_prix_tva ; ?> €</b>
-                    </p>
-                </div>
-            </article>
-        </div>
-            <?php
+
+
+        /// NOTE : il faut jouer avec un %3 pour écrire la div de class row avec 3 articles dedans.
+
+        if ($compteur %3 == 0) {
+            echo "<div class='row'>";
         }
+
         ?>
+        <!-- début du 1er bloc "article" -->
+        <article class="pres_product four columns border">
+            <div class="thumb">
+                <a href="./?p=detail&id=<?= $article_id; ?>" title="">
+                    <span class="rollover"><i>+</i></span>
+                    <img src="upload/thumb/thumb_<?= $article_id; ?>-1.jpg" alt=""/>
+                </a>
+            </div>
+            <header>
+                <h4><a href="./?p=detail&id=<?= $article_id; ?>" title=""><?= $article_description; ?></a></h4>
+                <div class="subheader">
+                    <span class="fa fa-bars"></span> <a href="" title=""></a>
+                    <span class="separator">|</span>
+                    <span class="fa fa-pencil"></span> <a href="" title="">Gaetano Sciolari</a>
+                    <span class="separator">|</span>
+                    <span class="fa fa-building-o"></span> <a href="" title=""><small style="opacity:.5;">- non précisé
+                            -</small></a>
+                </div>
+            </header>
+            <div class="une_txt">
+                <p>
+                    <?= $article_description; ?>
+                    <a href="./?p=detail&id=<?= $article_id; ?>" title="">[...]</a>
+                    <b><?= $article_prix_tva; ?> €</b>
+                </p>
+            </div>
+        </article>
 
-
-
-
-
-
+        <?php
+        if (($compteur+1) %3 == 0) {
+            echo "</div>";
+        }
+        $compteur++;
+        }
+    ?>
 
 
 </section>
