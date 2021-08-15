@@ -1,33 +1,30 @@
-
 <body>
 <div class="main_content">
     <header class="u-full-width">
         <div class="container row">
             <h2 class="six columns" id="logo">
-                <a href="./" title=""><img src="images/content/logo.png" alt="" /></a>
+                <a href="./" title=""><img src="images/content/logo.png" alt=""/></a>
             </h2>
 
             <div class="six columns">
                 <form action="./" method="get">
-                    <input type="text" name="q" value="" placeholder="Que recherchez-vous ?" />
-                    <input type="hidden" name="p" value="search" />
-                    <input type="submit" name="submit" value="OK" />
+                    <input type="text" name="q" value="" placeholder="Que recherchez-vous ?"/>
+                    <input type="hidden" name="p" value="search"/>
+                    <input type="submit" name="submit" value="OK"/>
                 </form>
             </div>
         </div>
     </header>
-    <nav class="container" id="nav">
-        <ul class="row">
-            <li class="three columns"><a href="./?p=category&id=1" title="">Meubles</a></li>
-            <li class="three columns"><a href="./?p=category&id=49" title="">Luminaires</a></li>
-            <li class="three columns"><a href="./?p=category&id=56" title="">Accessoires</a></li>
-            <li class="three columns"><a href="./?p=category&id=79" title="">Les exceptionnels</a></li>
-        </ul>
-    </nav>
+
+            <?php
+            categorieMenu();
+
+            ?>
+
 
     <?php
-    $page_view = file_exists("view/".$page_view.".php") ? $page_view : exit("view non définie ou inexistante");
-    include_once("view/".$page_view.".php");
+    $page_view = file_exists("view/" . $page_view . ".php") ? $page_view : exit("view non définie ou inexistante");
+    include_once("view/" . $page_view . ".php");
     ?>
 
 
@@ -51,17 +48,17 @@
 
 </div>
 
-<link rel="stylesheet" type="text/css" href="css/public/normalize.css" media="screen" defer="true" />
-<link rel="stylesheet" type="text/css" href="css/public/skeleton.css" media="screen" defer="true" />
-<link rel="stylesheet" type="text/css" href="css/public/skeleton_collapse.css" media="screen" defer="true" />
-<link rel="stylesheet" type="text/css" href="css/admin/font-awesome.css" media="screen" defer="true" />
-<link rel="stylesheet" type="text/css" href="css/public/custom.css" media="screen" defer="true" />
+<link rel="stylesheet" type="text/css" href="css/public/normalize.css" media="screen" defer="true"/>
+<link rel="stylesheet" type="text/css" href="css/public/skeleton.css" media="screen" defer="true"/>
+<link rel="stylesheet" type="text/css" href="css/public/skeleton_collapse.css" media="screen" defer="true"/>
+<link rel="stylesheet" type="text/css" href="css/admin/font-awesome.css" media="screen" defer="true"/>
+<link rel="stylesheet" type="text/css" href="css/public/custom.css" media="screen" defer="true"/>
 
 <script src="js/ScatteredPolaroidsGallery/classie.js"></script>
 <script src="js/ScatteredPolaroidsGallery/photostack.js"></script>
 <script>
-    new Photostack( document.getElementById( 'photostack-1' ), {
-        callback : function( item ) {
+    new Photostack(document.getElementById('photostack-1'), {
+        callback: function (item) {
             //console.log(item)
         }
     });
