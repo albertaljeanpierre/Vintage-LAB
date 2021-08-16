@@ -3,6 +3,8 @@
 /*
  * model/gestion_categories.php
  */
+adminProtection();
+
 include_once 'lib/categories.php';
 $url_page = "gestion_categories";
 

@@ -1,4 +1,6 @@
 <?php
+adminProtection();
+
 include_once("lib/item.php");
 
 $url_page = "gestion_item";

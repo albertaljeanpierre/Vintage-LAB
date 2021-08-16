@@ -1,4 +1,6 @@
 <?php
+adminProtection();
+
 include_once("lib/manufacturer.php");
 
 $url_page = "gestion_manufacturer";

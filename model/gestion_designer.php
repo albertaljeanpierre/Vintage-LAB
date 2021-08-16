@@ -1,4 +1,6 @@
 <?php
+adminProtection() ;
+
 include_once("lib/designer.php");
 
 $url_page = "gestion_designer";

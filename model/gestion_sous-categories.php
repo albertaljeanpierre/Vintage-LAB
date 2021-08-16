@@ -3,6 +3,7 @@
 /*
  * model/gestion_sous-categories.php
  */
+adminProtection();
 
 include_once 'lib/categories.php';
 include_once 'lib/sous-categories.php';

@@ -1,4 +1,6 @@
 <?php
+adminProtection();
+
 include_once("lib/shape.php");
 
 $url_page = "gestion_shape";

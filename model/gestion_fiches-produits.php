@@ -1,4 +1,6 @@
 <?php
+adminProtection();
+
 include_once("lib/fiches-produits.php");
 
 $url_page = "gestion_fiches-produits";
